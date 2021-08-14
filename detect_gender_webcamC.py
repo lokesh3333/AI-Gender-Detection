@@ -20,7 +20,7 @@ def predict():
     model = load_model('gender_detection.model')
 
     # open webcam
-    webcam = cv2.VideoCapture(0)
+    webcam = cv2.VideoCapture('people.mp4')
     
     classes = ['man','woman']
 
@@ -98,6 +98,7 @@ def video_feed():
     """Video streaming route. Put this in the src attribute of an img tag."""
     return Response(predict(),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
+
 
 if __name__ == "__main__":
     app.run(debug=True)
